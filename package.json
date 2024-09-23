@@ -1,0 +1,45 @@
+{
+  "name": "just-dash",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "JustDash is a lightweight, modular utility library designed for JavaScript developers who want to harness the power of functional programming without the overhead of large libraries.",
+  "main": "./src/index.js",
+  "scripts": {
+    "build": "esbuild ./src/index.js --bundle --minify --outfile=./dist/just-dash.min.js",
+    "dev": "chokidar ./src/**.*js -c \"npm run test\"",
+    "test": "uvu tests"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/weluvabid/just-dash.git"
+  },
+  "keywords": [
+    "justdash",
+    "utility-library",
+    "functional-programming",
+    "javascript",
+    "modular",
+    "lightweight",
+    "utilities",
+    "lodash-alternative",
+    "functional-utils",
+    "npm-package",
+    "utility-functions",
+    "javascript-utilities",
+    "functional-helpers",
+    "clean-code",
+    "fp",
+    "composable"
+  ],
+  "author": "weluvabid",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/weluvabid/just-dash/issues"
+  },
+  "homepage": "https://github.com/weluvabid/just-dash#readme",
+  "devDependencies": {
+    "chokidar-cli": "^3.0.0",
+    "esbuild": "0.24.0",
+    "uvu": "^0.5.6"
+  }
+}
