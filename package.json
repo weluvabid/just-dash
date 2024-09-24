@@ -6,8 +6,8 @@
   "main": "./src/index.js",
   "scripts": {
     "build": "esbuild ./src/index.js --bundle --minify --outfile=./dist/just-dash.min.js",
-    "dev": "chokidar ./src/**.*js -c \"npm run test\"",
-    "test": "uvu tests"
+    "test": "uvu -r esbuild-register",
+    "test:watch": "chokidar ./src/** -c \"npm run test\""
   },
   "repository": {
     "type": "git",
@@ -40,6 +40,7 @@
   "devDependencies": {
     "chokidar-cli": "^3.0.0",
     "esbuild": "0.24.0",
+    "esbuild-register": "^3.6.0",
     "uvu": "^0.5.6"
   }
 }
