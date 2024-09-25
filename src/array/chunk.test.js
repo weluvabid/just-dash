@@ -1,5 +1,6 @@
 import { suite } from 'uvu';
 import * as assert from 'uvu/assert';
+
 import chunk from './chunk';
 
 const chunkSuite = suite('chunk');
