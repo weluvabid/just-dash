@@ -1,1 +1,3 @@
-console.log('Hello World!');
+import chunk from './array/chunk';
+
+export { chunk };

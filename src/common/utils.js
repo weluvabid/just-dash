@@ -5,3 +5,11 @@ export function isFunction(input) {
 export function isArray(input) {
     return Array.isArray(input);
 }
+
+export function isNumber(input) {
+    return typeof input === 'number';
+}
+
+export function isPositiveWholeNumber(input) {
+    return isNumber(input) && input >= 0 && input % 1 === 0;
+}
