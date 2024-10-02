@@ -1,6 +1,6 @@
 import { suite } from 'uvu';
 import * as assert from 'uvu/assert';
-import { isArray, isFunction, isNumber, isPositiveWholeNumber } from './utils';
+import { isArray, isFunction, isNumber, isPositiveWholeNumber, isString } from './utils';
 
 const utilsSuite = suite('utils');
 
@@ -28,6 +28,14 @@ utilsSuite('isPositiveWholeNumber', () => {
     assert.is(isPositiveWholeNumber(0), true);
     assert.is(isPositiveWholeNumber(-1), false);
     assert.is(isPositiveWholeNumber(1.6), false);
+});
+
+utilsSuite('isString', () => {
+    assert.is(isString(1), false);
+    assert.is(isString('1'), true);
+    assert.is(isString(''), true);
+    assert.is(isString('string'), true);
+    assert.is(isString({}), false);
 });
 
 utilsSuite.run();
