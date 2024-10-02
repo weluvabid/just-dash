@@ -5,5 +5,6 @@ import flatten from './array/flatten';
 import flattenDeep from './array/flatten-deep';
 import intersection from './array/intersection';
 import uniq from './array/uniq';
+import zip from './array/zip';
 
-export { chunk, compact, difference, flatten, flattenDeep, intersection, uniq };
+export { chunk, compact, difference, flatten, flattenDeep, intersection, uniq, zip };
