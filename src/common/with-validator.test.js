@@ -50,4 +50,15 @@ withValidatorSuite('should not throw if all validators pass', () => {
     assert.not.throws(() => withValidator((a, b, c) => [a, b, c], [validValidator, validValidator, validValidator])('a', 'b', 'c'));
 });
 
+withValidatorSuite('should pass all arguments to the single validator when there is one validator and the function accepts arbitrary arguments', () => {
+    const fn = (...args) => {
+        assert.equal(args.length, 3);
+        assert.equal(args[0], 'a');
+        assert.equal(args[1], 'b');
+        assert.equal(args[2], 'c');
+    };
+
+    withValidator(fn, [validValidator])('a', 'b', 'c');
+});
+
 withValidatorSuite.run();
