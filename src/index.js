@@ -7,4 +7,6 @@ import intersection from './array/intersection';
 import uniq from './array/uniq';
 import zip from './array/zip';
 
-export { chunk, compact, difference, flatten, flattenDeep, intersection, uniq, zip };
+import merge from './object/merge';
+
+export { chunk, compact, difference, flatten, flattenDeep, intersection, uniq, zip, merge };
