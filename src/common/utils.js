@@ -19,11 +19,13 @@ export function isPositiveWholeNumber(input) {
 }
 
 export function isObject(input) {
-    const obj = {};
-    
-    return (input && input.__proto__) === obj.__proto__;
+    return Object.prototype.toString.call(input) === '[object Object]';
 }
 
 export function isUndefined(input) {
     return typeof input === 'undefined';
+}
+
+export function hasOwnProperty(obj, key) {
+    return Object.prototype.hasOwnProperty.call(obj, key);
 }

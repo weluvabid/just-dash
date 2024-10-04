@@ -1,6 +1,6 @@
 import { suite } from 'uvu';
 import * as assert from 'uvu/assert';
-import { isArray, isFunction, isNumber, isPositiveWholeNumber, isString } from './utils';
+import { hasOwnProperty, isArray, isFunction, isNumber, isObject, isPositiveWholeNumber, isString, isUndefined } from './utils';
 
 const utilsSuite = suite('utils');
 
@@ -36,6 +36,26 @@ utilsSuite('isString', () => {
     assert.is(isString(''), true);
     assert.is(isString('string'), true);
     assert.is(isString({}), false);
+});
+
+utilsSuite('isObject', () => {
+    assert.is(isObject({}), true);
+    assert.is(isObject([]), false);
+    assert.is(isObject(1), false);
+});
+
+utilsSuite('isUndefined', () => {
+    assert.is(isUndefined(1), false);
+    assert.is(isUndefined('1'), false);
+    assert.is(isUndefined(''), false);
+    assert.is(isUndefined('string'), false);
+    assert.is(isUndefined({}), false);
+    assert.is(isUndefined(undefined), true);
+});
+
+utilsSuite('hasOwnProperty', () => {
+    assert.is(hasOwnProperty({ a: 1 }, 'a'), true);
+    assert.is(hasOwnProperty({ a: 1 }, 'b'), false);
 });
 
 utilsSuite.run();
