@@ -81,4 +81,13 @@ mergeSuite('should overwrite primitive values', () => {
   assert.equal(merge(target, source), expected);
 });
 
+mergeSuite('should handle symbols', () => {
+  const sym = Symbol('sym');
+  const target = { [sym]: 1, b: 2 };
+  const source = { [sym]: 3 };
+  const expected = { [sym]: 3, b: 2 };
+  
+  assert.equal(merge(target, source), expected);
+});
+
 mergeSuite.run();

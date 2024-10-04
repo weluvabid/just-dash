@@ -1,4 +1,4 @@
-import { isArray, isObject, isUndefined } from "../common/utils";
+import { hasOwnProperty, isArray, isObject, isUndefined } from "../common/utils";
 import withValidator from "../common/with-validator";
 
 import { mergeValidators } from "./merge.constants";
@@ -47,12 +47,16 @@ function $mergeHelper(seen, target, ...srcs) {
 	if (!isObject(target) && !isArray(target) || seen.has(target)) {
         return target;
     }
-
+  
     seen.add(target);
   
 	srcs.forEach((src) => {
-        for (const [key, value] of Object.entries(src)) {
-            if (target[key] !== value && !seen.has(value)) {
+        const keys = [...Object.keys(src), ...Object.getOwnPropertySymbols(src)];
+
+        keys.forEach((key) => {
+            const value = src[key];
+
+            if ((!hasOwnProperty(target, key) ||  target[key] !== value) && !seen.has(value)) {
                 if (isObject(value) || isArray(value)) {
                     seen.add(value);
                 }
@@ -62,7 +66,7 @@ function $mergeHelper(seen, target, ...srcs) {
                     ? cloneValue(value, target[key])
                     : $mergeHelper(seen, maybeObj, value);
             }
-        }
+        });
   });
   
   return target;
