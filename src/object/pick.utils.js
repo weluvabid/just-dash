@@ -8,7 +8,7 @@ export function pickHelper(seen, obj, path) {
     return obj;
   }
 
-  if (isObject(obj) && !isArray(obj)) {
+  if (isObject(obj) || isArray(obj)) {
     seen.add(obj);
   }
 

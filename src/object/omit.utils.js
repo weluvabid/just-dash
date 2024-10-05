@@ -7,7 +7,7 @@ export function omitHelper(seen, obj, paths, level = 0) {
     return obj;
   }
 
-  if (isObject(obj) && !isArray(obj)) {
+  if (isObject(obj) || isArray(obj)) {
     seen.add(obj);
   }
 
