@@ -1,10 +1,12 @@
+import { isArray } from '../common/utils';
+
 import { KEY_MISSING_SYM } from './object.constants';
 import { extractKeys } from './object.utils';
 import { pickHelper, createPickableObject } from './pick.utils';
 import merge from './merge';
 
 export default function pick(obj, keys) {
-  if (!Array.isArray(keys)) {
+  if (!isArray(keys)) {
     return obj;
   }
 
