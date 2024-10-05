@@ -8,7 +8,7 @@ const pickSuite = suite('pick');
 pickSuite('should return the original object if no keys are provided', () => {
   const obj = { a: 1, b: 2, c: 3 };
   const result = pick(obj, []);
-  assert.equal(result, obj);
+  assert.equal(result, {});
 });
 
 pickSuite('should return null or undefined if the original object is null or undefined', () => {
@@ -52,7 +52,7 @@ pickSuite('should handle nested objects with arrays and pick specified keys and 
 pickSuite('should return an empty object when provided with an empty array of keys', () => {
   const obj = { a: 1, b: 2, c: 3 };
   const result = pick(obj, []);
-  assert.equal(result, obj); // No change to the object, same as input
+  assert.equal(result, {});
 });
 
 pickSuite('should handle symbols as keys and pick them correctly', () => {

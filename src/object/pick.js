@@ -4,24 +4,32 @@ import { pickHelper, createPickableObject } from './pick.utils';
 import merge from './merge';
 
 export default function pick(obj, keys) {
-    if (!Array.isArray(keys) || keys.length === 0) {
-        return obj;
-    }
+  if (!Array.isArray(keys)) {
+    return obj;
+  }
 
-    return keys.reduce(
-        (pickedObj, key) => {
-            const extractedKeys = extractKeys(key);
+  if (keys.length === 0) {
+    const emptyPickableObject = createPickableObject(obj);
 
-            if (extractedKeys.length === 0) {
-                return pickedObj;
-            }
+    return emptyPickableObject === undefined
+      ? obj
+      : emptyPickableObject;
+  }
 
-            const newPickedObj = pickHelper(new WeakSet(), obj, extractedKeys);
+  return keys.reduce(
+    (pickedObj, key) => {
+      const extractedKeys = extractKeys(key);
 
-            return newPickedObj !== KEY_MISSING_SYM
-                ? merge(pickedObj, newPickedObj) 
-                : pickedObj
-        },
-        createPickableObject(obj)
-    );
+      if (extractedKeys.length === 0) {
+        return pickedObj;
+      }
+
+      const newPickedObj = pickHelper(new WeakSet(), obj, extractedKeys);
+
+      return newPickedObj !== KEY_MISSING_SYM
+        ? merge(pickedObj, newPickedObj) 
+        : pickedObj
+    },
+    createPickableObject(obj)
+  );
 }
