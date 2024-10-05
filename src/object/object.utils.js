@@ -1,4 +1,4 @@
-import { isString } from "../common/utils";
+import { isArray, isObject, isString } from "../common/utils";
 
 import { KEY_REGEX } from "./object.constants";
 
@@ -23,4 +23,16 @@ export function extractKeys(input) {
   }
 
   return keys;
+}
+
+export function createEmptyObjectOfType(input) {
+  if (isObject(input)) {
+    return {};
+  }
+  
+  if (isArray(input)) {
+    return [];
+  }
+  
+  return undefined;
 }

@@ -1,8 +1,8 @@
 import { isArray } from '../common/utils';
 
 import { KEY_MISSING_SYM } from './object.constants';
-import { extractKeys } from './object.utils';
-import { pickHelper, createPickableObject } from './pick.utils';
+import { extractKeys, createEmptyObjectOfType } from './object.utils';
+import { pickHelper } from './pick.utils';
 import merge from './merge';
 
 export default function pick(obj, keys) {
@@ -11,7 +11,7 @@ export default function pick(obj, keys) {
   }
 
   if (keys.length === 0) {
-    const emptyPickableObject = createPickableObject(obj);
+    const emptyPickableObject = createEmptyObjectOfType(obj);
 
     return emptyPickableObject === undefined
       ? obj
@@ -32,6 +32,6 @@ export default function pick(obj, keys) {
         ? merge(pickedObj, newPickedObj) 
         : pickedObj
     },
-    createPickableObject(obj)
+    createEmptyObjectOfType(obj)
   );
 }

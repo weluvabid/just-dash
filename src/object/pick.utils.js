@@ -1,6 +1,7 @@
 import { isObject, isArray, hasOwnProperty } from '../common/utils';
 
 import { KEY_MISSING_SYM } from './object.constants';
+import { createEmptyObjectOfType } from './object.utils';
 
 export function pickHelper(seen, obj, path) {
   if (path.length === 0 || seen.has(obj)) {
@@ -23,7 +24,7 @@ export function pickHelper(seen, obj, path) {
     return value;
   }
 
-  const clonedObj = createPickableObject(obj);
+  const clonedObj = createEmptyObjectOfType(obj);
 
   if (clonedObj !== undefined) {
     clonedObj[key] = value;
@@ -32,16 +33,4 @@ export function pickHelper(seen, obj, path) {
   }
 
   return obj;
-}
-
-export function createPickableObject(input) {
-  if (isObject(input)) {
-    return {};
-  }
-    
-  if (isArray(input)) {
-    return [];
-  }
-    
-  return undefined;
 }

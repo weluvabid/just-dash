@@ -1,16 +1,6 @@
 import { isObject, isArray, hasOwnProperty } from '../common/utils';
 
-function createOmittableObject(input) {
-  if (isObject(input)) {
-    return {};
-  }
-  
-  if (isArray(input)) {
-    return [];
-  }
-  
-  return undefined;
-}
+import { createEmptyObjectOfType } from './object.utils';
 
 export function omitHelper(seen, obj, paths, level = 0) {
   if (paths.length === 0 || seen.has(obj) || (!isObject(obj) && !isArray(obj))) {
@@ -35,5 +25,5 @@ export function omitHelper(seen, obj, paths, level = 0) {
     }
 
     return newObj;
-  }, createOmittableObject(obj));
+  }, createEmptyObjectOfType(obj));
 }
