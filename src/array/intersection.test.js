@@ -6,15 +6,15 @@ import intersection from './intersection';
 const intersectionSuite = suite('intersection');
 
 intersectionSuite('should throw an error if the first input is not an array', () => {
-    assert.throws(() => intersection(1, [2, 3]), (err) => {
-      return err instanceof Error && err.message === 'src must be an array';
-    });
+  assert.throws(() => intersection(1, [2, 3]), (err) => {
+    return err instanceof Error && err.message === 'src must be an array';
   });
+});
   
 intersectionSuite('should throw an error if the second input is not an array', () => {
-    assert.throws(() => intersection([1, 2, 3], '4'), (err) => {
-      return err instanceof Error && err.message === 'target must be an array';
-    });
+  assert.throws(() => intersection([1, 2, 3], '4'), (err) => {
+    return err instanceof Error && err.message === 'target must be an array';
+  });
 });
 
 intersectionSuite('returns empty array for empty input arrays', () => {

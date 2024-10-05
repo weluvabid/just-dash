@@ -3,7 +3,7 @@ import withValidator from "../common/with-validator";
 import { flattenValidators } from "./flatten.constants";
 
 function flatten(array) {
-	const flattenedArray = [];
+  const flattenedArray = [];
   
   for (let i = 0; i < array.length; i += 1) {
   	if (Array.isArray(array[i])) {

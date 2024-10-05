@@ -3,11 +3,11 @@ import withValidator from "../common/with-validator";
 import { intersectionValidators } from "./intersection.constants";
 
 function intersection(src, target) {
-	if (target.length === 0 || src.length === 0) {
+  if (target.length === 0 || src.length === 0) {
   	return [];
   }
   
-	const set = new Set(target);
+  const set = new Set(target);
   const intersectingArray = new Set();
   
   for (let i = 0; i < src.length; i += 1) {
