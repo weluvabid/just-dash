@@ -56,11 +56,7 @@ function $mergeHelper(seen, target, ...srcs) {
         keys.forEach((key) => {
             const value = src[key];
 
-            if ((!hasOwnProperty(target, key) ||  target[key] !== value) && !seen.has(value)) {
-                if (isObject(value) || isArray(value)) {
-                    seen.add(value);
-                }
-                
+            if ((!hasOwnProperty(target, key) ||  target[key] !== value)) {
                 const maybeObj = getOrCreateMergableObject(target[key], value);
                 target[key] = isUndefined(maybeObj)
                     ? cloneValue(value, target[key])
