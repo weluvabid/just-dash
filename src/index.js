@@ -8,6 +8,7 @@ import uniq from './array/uniq';
 import zip from './array/zip';
 
 import merge from './object/merge';
+import omit from './object/omit';
 import pick from './object/pick';
 
-export { chunk, compact, difference, flatten, flattenDeep, intersection, uniq, zip, merge, pick };
+export { chunk, compact, difference, flatten, flattenDeep, intersection, uniq, zip, merge, omit, pick };
