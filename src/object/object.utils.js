@@ -36,3 +36,15 @@ export function createEmptyObjectOfType(input) {
   
   return undefined;
 }
+
+export function getOrCreateObjectOfType(target, src) {
+  if (isObject(src)) {
+    return isObject(target) ? target : {};
+  }
+
+  if (isArray(src)) {
+    return isArray(target) ? target : [];
+  }
+      
+  return undefined;
+}
