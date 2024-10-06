@@ -27,5 +27,5 @@ export function isUndefined(input) {
 }
 
 export function hasOwnProperty(obj, key) {
-  return Object.prototype.hasOwnProperty.call(obj, key);
+  return obj && Object.prototype.hasOwnProperty.call(obj, key);
 }

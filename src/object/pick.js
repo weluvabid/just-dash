@@ -1,4 +1,4 @@
-import { isArray } from '../common/utils';
+import { isArray, isUndefined } from '../common/utils';
 
 import { KEY_MISSING_SYM } from './object.constants';
 import { extractKeys, createEmptyObjectOfType } from './object.utils';
@@ -13,7 +13,7 @@ export default function pick(obj, keys) {
   if (keys.length === 0) {
     const emptyPickableObject = createEmptyObjectOfType(obj);
 
-    return emptyPickableObject === undefined
+    return isUndefined(emptyPickableObject)
       ? obj
       : emptyPickableObject;
   }

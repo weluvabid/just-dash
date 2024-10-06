@@ -56,10 +56,8 @@ mergeSuite('should handle Dates', () => {
 mergeSuite('should handle circular references', () => {
   const circularA = {};
   circularA.self = circularA;
-
   const circularB = {};
   circularB.self = circularB;
-
   const merged = merge(circularA, circularB);
   
   assert.equal(merged.self, merged); // Test if the circular reference is maintained
