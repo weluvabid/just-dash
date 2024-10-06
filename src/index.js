@@ -7,8 +7,10 @@ import intersection from './array/intersection';
 import uniq from './array/uniq';
 import zip from './array/zip';
 
+import get from './object/get';
 import merge from './object/merge';
 import omit from './object/omit';
 import pick from './object/pick';
+import set from './object/set';
 
-export { chunk, compact, difference, flatten, flattenDeep, intersection, uniq, zip, merge, omit, pick };
+export { chunk, compact, difference, flatten, flattenDeep, intersection, uniq, zip, get, merge, omit, pick, set };
