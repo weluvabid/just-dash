@@ -9,7 +9,7 @@ export default function every(obj, fn) {
 
   for (const [key, value] of toArray(obj)) {
     if (!fn(value, key)) {
-      return false
+      return false;
     }
   }
 

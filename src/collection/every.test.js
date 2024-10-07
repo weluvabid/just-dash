@@ -23,23 +23,29 @@ everySuite('should return false if collection is null or undefined', () => {
 
 everySuite('should return true when all elements satisfy the predicate', () => {
   const resultArray = every([2, 4, 6], (value) => value % 2 === 0);
+  
   assert.equal(resultArray, true);
 
   const resultObj = every({ a: 2, b: 4 }, (value) => value > 0);
+
   assert.equal(resultObj, true);
 
   const resultMap = every(new Map([['a', 2], ['b', 4]]), (value) => value > 0);
+
   assert.equal(resultMap, true);
 });
 
 everySuite('should return false when any element fails the predicate', () => {
   const resultArray = every([2, 3, 4], (value) => value % 2 === 0);
+  
   assert.equal(resultArray, false);
 
   const resultObj = every({ a: 2, b: -4 }, (value) => value > 0);
+
   assert.equal(resultObj, false);
 
   const resultMap = every(new Map([['a', 2], ['b', -4]]), (value) => value > 0);
+
   assert.equal(resultMap, false);
 });
 
@@ -51,9 +57,11 @@ everySuite('should handle mixed types', () => {
 
 everySuite('should work with Set collections', () => {
   const resultSet = every(new Set([2, 4, 6]), (value) => value % 2 === 0);
+
   assert.equal(resultSet, true);
 
   const resultSetFail = every(new Set([2, 3, 6]), (value) => value % 2 === 0);
+ 
   assert.equal(resultSetFail, false);
 });
 
