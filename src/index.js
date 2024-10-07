@@ -13,4 +13,10 @@ import omit from './object/omit';
 import pick from './object/pick';
 import set from './object/set';
 
-export { chunk, compact, difference, flatten, flattenDeep, intersection, uniq, zip, get, merge, omit, pick, set };
+import map from './collection/map';
+
+export { 
+  chunk, compact, difference, flatten, flattenDeep, intersection, uniq, zip,
+  get, merge, omit, pick, set,
+  map
+};
