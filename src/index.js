@@ -17,10 +17,11 @@ import every from './collection/every';
 import filter from './collection/filter';
 import find from './collection/find';
 import map from './collection/map';
+import reduce from './collection/reduce';
 import some from './collection/some';
 
 export { 
   chunk, compact, difference, flatten, flattenDeep, intersection, uniq, zip,
   get, merge, omit, pick, set,
-  every, filter, find, map, some
+  every, filter, find, map, reduce, some
 };
