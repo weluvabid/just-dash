@@ -13,11 +13,12 @@ import omit from './object/omit';
 import pick from './object/pick';
 import set from './object/set';
 
+import every from './collection/every';
 import filter from './collection/filter';
 import map from './collection/map';
 
 export { 
   chunk, compact, difference, flatten, flattenDeep, intersection, uniq, zip,
   get, merge, omit, pick, set,
-  filter, map
+  every, filter, map
 };
