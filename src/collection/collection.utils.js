@@ -36,8 +36,10 @@ export function toArray(input) {
   return [];
 }
   
-export function setValueInCollection(collection, key, value) {
-  if (isArray(collection) || isObject(collection)) {
+export function setValueInCollection(collection, key, value, appendMode = false) {
+  if (isArray(collection)) {
+    collection[appendMode ? collection.length : key] = value;
+  } else if (isObject(collection)) {
     collection[key] = value;
   } else if (collection instanceof Map) {
     collection.set(key, value);
@@ -47,4 +49,3 @@ export function setValueInCollection(collection, key, value) {
   
   return collection;
 }
-  
