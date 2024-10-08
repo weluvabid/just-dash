@@ -6,17 +6,17 @@ import reduce from './reduce';
 const reduceSuite = suite('reduce');
 
 reduceSuite('should return null for invalid inputs', () => {
-  assert.equal(reduce(null, () => {}), null);
-  assert.equal(reduce(undefined, () => {}), null);
+  assert.equal(reduce(null, () => { }), null);
+  assert.equal(reduce(undefined, () => { }), null);
   assert.equal(reduce([], null), null);
   assert.equal(reduce({}, null), null);
 });
 
 reduceSuite('should return initialValue when the collection is empty', () => {
-  assert.equal(reduce([], () => {}), null); // Default initialValue
-  assert.equal(reduce({}, () => {}), null); // Default initialValue
-  assert.equal(reduce([], () => {}, 'initial'), 'initial');
-  assert.equal(reduce({}, () => {}, 'initial'), 'initial');
+  assert.equal(reduce([], () => { }), null); // Default initialValue
+  assert.equal(reduce({}, () => { }), null); // Default initialValue
+  assert.equal(reduce([], () => { }, 'initial'), 'initial');
+  assert.equal(reduce({}, () => { }, 'initial'), 'initial');
 });
 
 reduceSuite('should reduce an array of numbers correctly', () => {
@@ -79,21 +79,21 @@ reduceSuite('should handle symbols', () => {
   const sym1 = Symbol('sym1');
   const sym2 = Symbol('sym2');
   const concatSymbols = (acc, val) => acc + val.toString();
-  
+
   assert.equal(reduce([sym1, sym2], concatSymbols, ''), 'Symbol(sym1)Symbol(sym2)');
 });
 
-reduceSuite.only('should handle Map collections', () => {
+reduceSuite('should handle Map collections', () => {
   const map = new Map([['a', 1], ['b', 2]]);
   const sumMap = (acc, val) => acc + val;
-  
+
   assert.equal(reduce(map, sumMap), 3); // Summing values
 });
-  
+
 reduceSuite('should handle Set collections', () => {
   const set = new Set([1, 2, 3]);
   const sumSet = (acc, val) => acc + val;
-  
+
   assert.equal(reduce(set, sumSet), 6); // Summing values
 });
 
