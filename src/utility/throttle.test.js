@@ -138,4 +138,21 @@ throttleSuite('delay of zero behaves correctly', async () => {
   assert.is(callCount, 2); // Function should be called immediately twice
 });
 
+throttleSuite('callback execution on trailing', async () => {
+  let callCount = 0;
+  const fn = () => callCount++;
+  const callback = () => {
+    callCount++; // Increment callCount when callback is executed
+  };
+  const throttledFn = throttle(fn, { delay: 100, trailing: true, callback });
+
+  throttledFn(); // Call the throttled function
+  await new Promise((resolve) => setTimeout(resolve, 50)); // Wait less than delay
+  throttledFn(); // Call again to trigger throttle
+  await new Promise((resolve) => setTimeout(resolve, 150)); // Wait longer than delay
+
+  // Check that fn was called once and callback was called once
+  assert.is(callCount, 2); // One from fn and one from callback
+});
+
 throttleSuite.run();
