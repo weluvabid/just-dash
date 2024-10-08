@@ -22,10 +22,11 @@ import some from './collection/some';
 
 import cloneDeep from './utility/clone-deep';
 import isEqual from './utility/is-equal';
+import throttle from './utility/throttle';
 
 export { 
   chunk, compact, difference, flatten, flattenDeep, intersection, uniq, zip,
   get, merge, omit, pick, set,
   every, filter, find, map, reduce, some,
-  cloneDeep, isEqual
+  cloneDeep, isEqual, throttle
 };

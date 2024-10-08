@@ -26,6 +26,10 @@ export function isUndefined(input) {
   return typeof input === 'undefined';
 }
 
+export function  isBoolean(input) {
+  return typeof input === 'boolean';
+}
+
 export function hasOwnProperty(obj, key) {
   return obj && Object.prototype.hasOwnProperty.call(obj, key);
 }
