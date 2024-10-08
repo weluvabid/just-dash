@@ -29,3 +29,7 @@ export function isUndefined(input) {
 export function hasOwnProperty(obj, key) {
   return obj && Object.prototype.hasOwnProperty.call(obj, key);
 }
+
+export function isPrimitive(input) {
+  return input === null || (typeof input !== 'object' && typeof input !== 'function');
+}
