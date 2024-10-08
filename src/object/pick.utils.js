@@ -1,4 +1,4 @@
-import { isObject, isArray, hasOwnProperty } from '../common/utils';
+import { hasOwnProperty, isPrimitive } from '../common/utils';
 
 import { KEY_MISSING_SYM } from './object.constants';
 import { createEmptyObjectOfType } from './object.utils';
@@ -8,7 +8,7 @@ export function pickHelper(seen, obj, path) {
     return obj;
   }
 
-  if (isObject(obj) || isArray(obj)) {
+  if (!isPrimitive(obj)) {
     seen.add(obj);
   }
 

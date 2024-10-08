@@ -1,4 +1,4 @@
-import { hasOwnProperty, isArray, isObject, isUndefined } from "../common/utils";
+import { hasOwnProperty, isPrimitive, isUndefined } from "../common/utils";
 import withValidator from "../common/with-validator";
 
 import { mergeValidators } from "./merge.constants";
@@ -25,7 +25,7 @@ function cloneValue(newValue, oldValue) {
 }
 
 function $mergeHelper(seen, target, ...srcs) {
-  if (!isObject(target) && !isArray(target) || seen.has(target)) {
+  if (isPrimitive(target) || seen.has(target)) {
     return target;
   }
   
