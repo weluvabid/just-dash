@@ -4,7 +4,6 @@ import withValidator from "../common/with-validator";
 import { DEFAULT_THROTTLE_OPTIONS, throttleValidators } from "./throttle.constants";
 
 function throttle(fn, options) {
-  let lastInvocationTime = globalThis.performance.now();
   let timer = null;
   let mergedOptions = { ...DEFAULT_THROTTLE_OPTIONS };
 
@@ -15,12 +14,9 @@ function throttle(fn, options) {
   }
 
   function throttleWrapper(...args) {
-    const now = globalThis.performance.now();
     let result = undefined;
 
-    if (!timer || now - lastInvocationTime >= mergedOptions.maxDelay) {
-      lastInvocationTime = now;
- 
+    if (!timer) { 
       if (mergedOptions.leading) {
         result = fn(...args);
       }

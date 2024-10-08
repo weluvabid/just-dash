@@ -29,10 +29,6 @@ export const throttleValidators = [
       if (hasOwnProperty(input, 'callback') && !isFunction(input.callback)) {
         throw new Error('options.callback must be a function');
       }
-
-      if (hasOwnProperty(input, 'maxDelay') && !isNumber(input.maxDelay)) {
-        throw new Error('options.maxDelay must be a number');
-      }
     }
 
     return true;
@@ -41,7 +37,6 @@ export const throttleValidators = [
 
 export const DEFAULT_THROTTLE_OPTIONS = Object.freeze({
   delay: 0,
-  maxDelay: Number.POSITIVE_INFINITY,
   trailing: true,
   leading: false,
   callback: () => {}

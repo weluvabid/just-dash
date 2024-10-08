@@ -42,16 +42,6 @@ throttleSuite('trailing execution works', async () => {
   assert.is(callCount, 1); // Function should be called once after delay
 });
 
-throttleSuite('max delay execution works', async () => {
-  let callCount = 0;
-  const fn = () => callCount++;
-  const throttledFn = throttle(fn, { delay: 100, maxDelay: 200 });
-
-  throttledFn();
-  await new Promise((resolve) => setTimeout(resolve, 250)); // Wait longer than maxDelay
-  assert.is(callCount, 1); // Function should be called immediately after maxDelay
-});
-
 throttleSuite('leading and trailing both work correctly', async () => {
   let callCount = 0;
   const fn = () => callCount++;
@@ -101,10 +91,6 @@ throttleSuite('validates input options', () => {
   assert.throws(() => throttle(() => {}, { callback: 'not a function' }), {
     message: 'options.callback must be a function',
   });
-
-  assert.throws(() => throttle(() => {}, { maxDelay: 'not a number' }), {
-    message: 'options.maxDelay must be a number',
-  });
 });
 
 throttleSuite('cancel method prevents execution', async () => {
@@ -150,17 +136,6 @@ throttleSuite('delay of zero behaves correctly', async () => {
   await new Promise((resolve) => setTimeout(resolve, 0)); // Wait for any remaining macro tasks
 
   assert.is(callCount, 2); // Function should be called immediately twice
-});
-
-throttleSuite('maxDelay ensures function is called', async () => {
-  let callCount = 0;
-  const fn = () => callCount++;
-  const throttledFn = throttle(fn, { delay: 100, maxDelay: 200 });
-
-  throttledFn(); // Call 1
-  await new Promise((resolve) => setTimeout(resolve, 250)); // Wait longer than maxDelay
-
-  assert.is(callCount, 1); // Function should be called after maxDelay
 });
 
 throttleSuite.run();
