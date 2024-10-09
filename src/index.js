@@ -21,6 +21,7 @@ import reduce from './collection/reduce';
 import some from './collection/some';
 
 import cloneDeep from './utility/clone-deep';
+import debounce from './utility/debounce';
 import isEqual from './utility/is-equal';
 import throttle from './utility/throttle';
 
@@ -28,5 +29,5 @@ export {
   chunk, compact, difference, flatten, flattenDeep, intersection, uniq, zip,
   get, merge, omit, pick, set,
   every, filter, find, map, reduce, some,
-  cloneDeep, isEqual, throttle
+  cloneDeep, debounce, isEqual, throttle
 };
