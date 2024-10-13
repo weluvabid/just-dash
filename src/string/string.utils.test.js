@@ -40,13 +40,23 @@ extractOperatorsSuite('handles Latin letters and operators', () => {
   assert.equal(extractOperators('Hello-World_good'), new Set([CAPITAL_LETTER_SYM, '-', '_']), 'Multiple operators detected');
 });
   
-// extractOperatorsSuite('handles non-Latin characters', () => {
-//   // extractOperators tests for non-Latin characters
-//   assert.equal(extractOperators('Привет_мир'), new Set(['_']), 'Underscore operator with Cyrillic characters detected');
-//   assert.equal(extractOperators('你好-世界'), new Set(['-']), 'Dash operator with Chinese characters detected');
-//   assert.equal(extractOperators('ΓειάΣου'), new Set([CAPITAL_LETTER_SYM]), 'Capital letters with Greek characters detected');
-// });
+extractOperatorsSuite('handles Latin and non-Latin characters', () => {
+  // Latin characters
+  assert.equal(extractOperators('Hello_World'), new Set(['_', CAPITAL_LETTER_SYM]), 'Detects underscore and capital letters for Latin');
+    
+  // Cyrillic characters
+  assert.equal(extractOperators('Привет_мир'), new Set(['_', CAPITAL_LETTER_SYM]), 'Detects underscore and capital letters for Cyrillic');
+    
+  // Greek characters
+  assert.equal(extractOperators('ΓειάΣου'), new Set([CAPITAL_LETTER_SYM]), 'Detects capital letters for Greek');
+    
+  // Chinese characters (no capitals)
+  assert.equal(extractOperators('你好世界'), new Set([]), 'Detects no operators for Chinese');
   
+  // Mixed cases
+  assert.equal(extractOperators('Привет-hello_Γεια'), new Set(['-', '_', CAPITAL_LETTER_SYM]), 'Handles mixed scripts and operators');
+});
+
 extractOperatorsSuite('handles mixed operators and capital letters', () => {
   assert.equal(extractOperators('Hello_World-Good'), new Set([CAPITAL_LETTER_SYM, '_', '-']), 'Handles mixed operators and capital letters');
   assert.equal(extractOperators('hello_world-good'), new Set(['_', '-']), 'Handles underscore and dash operators');
