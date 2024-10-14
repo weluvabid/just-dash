@@ -14,3 +14,7 @@ export const OPERATORS_MAP = new Map([
   ['\t', 'tab'],
   ['\r', 'carriage return']
 ]);
+
+export const REGEXP_ESCAPE_CHARS = new Set([
+  '\\', '"', '(', ')', '[', ']', '{', '}', '>', '<', '!', '|', '?', '*', '^', '+', '$', '/', 
+]);
