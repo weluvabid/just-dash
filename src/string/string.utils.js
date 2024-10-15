@@ -30,29 +30,30 @@ export function extractOperators(str) {
   return operators;
 }
 
-export function applyTransformation(strings, operator, replacer = '') {
-  if (!isArray(strings)) {
-  	return '';
+export function applyTransformation(segments, delimiter, replacement = '') {
+  if (!isArray(segments) || segments.length === 0) {
+    return '';
   }
-  
-  if (isUndefined(operator)) {
-  	return strings.join(replacer);
-  }
-  
-  let transformedString = strings[0] === operator ? strings[0] : '';
-  let lastLength = 0;
-  let i = Number(strings[0] === operator);
-  
-  for (; i < strings.length; i += 1) {
-    const string = strings[i];
 
-    if (lastLength === 1) {
-      transformedString += (replacer + string);
-    } else if (string[0] !== operator || string.length !== 1) {
-      transformedString += string;
+  if (isUndefined(delimiter)) {
+    return segments.join(replacement);
+  }
+
+  const isDelimiterAtFirstIndex = segments[0] === delimiter;
+  let transformedString = isDelimiterAtFirstIndex ? segments[0] : '';
+  let previousDelimiterLength = 0;
+  let currentIndex = Number(isDelimiterAtFirstIndex);
+
+  for (; currentIndex < segments.length; currentIndex += 1) {
+    const segment = segments[currentIndex];
+
+    if (previousDelimiterLength === 1) {
+      transformedString += (replacement + segment);
+    } else if (segment[0] !== delimiter || segment.length !== 1) {
+      transformedString += segment;
     }
 
-    lastLength = string[0] === operator ? string.length : 0
+    previousDelimiterLength = segment[0] === delimiter ? segment.length : 0;
   }
 
   return transformedString;
